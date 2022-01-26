@@ -100,10 +100,10 @@ class _MyHomeState extends State<MyHome> {
                 itemBuilder: (context, index) {
                   print("first chapter: ${allChapters[index].name}");
                   return ChapterCard(
-                    chapterName: "Test $index",
-                    chapterNum: index,
-                    verseCount: index,
-                    chapterDesc: "Test des $index",
+                    chapterName: allChapters[index].name,
+                    chapterNum: allChapters[index].chapter_number,
+                    verseCount: allChapters[index].verses_count,
+                    chapterDesc: allChapters[index].summary.hi,
                   );
                 }));
   }
@@ -126,6 +126,9 @@ class ChapterCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         //on card tapped work is here
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text("Opening $chapterNum.$chapterName $verseCount sloka."),
+    ));
       },
       child: Card(
         color: Colors.white60,
@@ -162,15 +165,17 @@ class ChapterCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        chapterDesc,
-                        style: TextStyle(
-                            color: Colors.lightBlue.shade700,
-                            fontFamily: 'Poppins',
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.normal),
+                      Flexible(
+                        child: Text(
+                          chapterDesc,
+                          style: TextStyle(
+                              color: Colors.lightBlue.shade700,
+                              fontFamily: 'Poppins',
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.normal),
+                        ),
                       ),
                       Text(verseCount.toString()),
                     ],

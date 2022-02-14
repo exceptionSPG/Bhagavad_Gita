@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 class ChapterData {
   List<ChapterModel> myChapters = List<ChapterModel>.empty(growable: true);
-  String baseUrl = 'https://bhagavadgitaapi.in/chapters?api_key=cd362e4c6b8ff6123';
+  String baseUrl = 'https://bhagavadgitaapi.in/chapters?api_key=YOUR_API_KEY';
   String errMsg = ' ';
 
 
